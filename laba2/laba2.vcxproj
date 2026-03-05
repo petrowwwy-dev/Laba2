@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="Laba2.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
