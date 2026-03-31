@@ -20,6 +20,11 @@ public:
     Product(const Product& other);
 
     Product(Product&& other) noexcept;
+    
+    Product& operator=(const Product& other);
+
+
+
 
     virtual  ~Product();
 

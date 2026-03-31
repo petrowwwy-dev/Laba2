@@ -36,6 +36,20 @@ Product::Product(Product&& other) noexcept
     cout << "[Переміщення] Дані товару '" << name << "' успішно переміщено!" << endl;
 }
 
+Product& Product::operator=(const Product& other) {
+    if (this == &other) {
+        return *this; 
+    }
+    this->id = other.id;
+    this->name = other.name;
+    this->price = other.price;
+    this->stock = other.stock;
+
+    return *this;
+}
+
+
+
 
 Product::~Product() {
     totalProducts--;

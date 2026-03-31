@@ -1,0 +1,32 @@
+#pragma once
+#include "Product.h"
+#include <string>
+#include <iostream>
+
+
+class Electronics : public Product {
+private:
+    int warrantyMonths; 
+    std::string brand;  
+
+public:
+    
+    Electronics(int id, std::string name, double price, int stock, int warranty, std::string brand);
+
+   
+
+    
+    Electronics(const Electronics& other);
+
+    
+    Electronics(Electronics&& other) noexcept;
+
+    
+    Electronics& operator=(const Electronics& other);
+
+    
+    ~Electronics() override;
+
+    
+    void printInfo() const;
+};
