@@ -2,7 +2,7 @@
 #include <string>
 
 class Product {
-private:
+protected:
     int id;
     std::string name;
     double price;
@@ -21,7 +21,7 @@ public:
 
     Product(Product&& other) noexcept;
 
-    ~Product();
+    virtual  ~Product();
 
     void printInfo() const;
     void updateStock(int amount);
