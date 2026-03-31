@@ -3,14 +3,13 @@
 
 using namespace std;
 
-
-Order::Order(int oId, double oAmount, string oStatus) : orderId(oId), totalAmount(oAmount), status(oStatus) {
+// Оновлений конструктор: тепер він копіює переданий product у внутрішню змінну orderedProduct
+Order::Order(int oId, const Product& product, double oAmount, string oStatus)
+    : orderId(oId), orderedProduct(product), totalAmount(oAmount), status(oStatus) {
     cout << " Створено замовлення №" << orderId << endl;
 }
 
-Order::Order(int oId) : Order(oId, 0.0, "") {
-    cout << " Спрацював делегуючий конструктор для замовлення №" << orderId << endl;
-}
+// Делегуючий конструктор довелось прибрати, бо тепер замовлення НЕ МОЖЕ існувати без товару (це суть композиції)
 
 Order::~Order() {
     cout << " Замовлення №" << orderId << " видалено." << endl;
@@ -19,10 +18,10 @@ Order::~Order() {
 void Order::pay() {
     if (totalAmount > 0) {
         status = "Оплачено";
-        cout << "--> Замовлення №" << orderId << " успішно оплачено!" << endl;
+        cout << "---> Замовлення №" << orderId << " успішно оплачено!" << endl;
     }
     else {
-        cout << "--> Помилка: Неможливо оплатити порожнє замовлення №" << orderId << "!" << endl;
+        cout << "---> Помилка: Неможливо оплатити порожнє замовлення №" << orderId << " !" << endl;
     }
 }
 
@@ -31,5 +30,10 @@ void Order::printOrder() {
     cout << "Номер: " << orderId << endl;
     cout << "Сума до оплати: " << totalAmount << " грн" << endl;
     cout << "Статус: " << status << endl;
-    cout << "======================\n" << endl;
+
+    // Викликаємо метод вкладеного об'єкта товару (Композиція в дії!)
+    cout << "--- Деталі товару ---" << endl;
+    orderedProduct.printInfo();
+
+    cout << "=========================\n" << endl;
 }

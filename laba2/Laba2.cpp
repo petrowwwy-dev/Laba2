@@ -4,6 +4,7 @@
 #include "Product.h" 
 #include "Customer.h"
 #include "Order.h"
+#include "Electronics.h"
 
 using namespace std;
 
@@ -56,15 +57,19 @@ int main() {
     c1.printInfo();
     c2.printInfo();
 
-    Order order1(101, 1500.50);
-    order1.printOrder();
+    cout << "\n=== ТЕСТУВАННЯ КОМПОЗИЦІЇ ТА НАСЛІДУВАННЯ ===" << endl;
 
-    
+    // Створюємо звичайне замовлення з товаром p1, який у тебе вже є вище
+    Order order1(101, p1, 1500.50);
+    order1.printOrder();
     order1.pay();
-    order1.printOrder();
 
-   
-    Order order2(102);
+
+    // А тепер створимо наш новий об'єкт Electronics (Електроніка)
+    Electronics phone(200, "iPhone 15", 45000.0, 10, 12, "Apple");
+
+    // І покладемо цю електроніку в друге замовлення!
+    Order order2(102, phone, 45000.0);
     order2.printOrder();
 
     order2.pay();
