@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Electronics.h" />
+    <ClInclude Include="Laptop.h" />
     <ClInclude Include="Smartphone.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
@@ -29,6 +30,7 @@
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Electronics.cpp" />
     <ClCompile Include="Laba2.cpp" />
+    <ClCompile Include="Laptop.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Smartphone.cpp" />
