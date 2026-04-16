@@ -10,8 +10,8 @@ private:
     std::string status;
 
 public:
-
-    Order(int oId, const Product& product, double oAmount, std::string oStatus = "Нове");
+    
+    Order(int oId, const Product& product, double oAmount, std::string oStatus = "РќРѕРІРµ");
     Order(int oId);
 
     ~Order();

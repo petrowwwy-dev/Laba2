@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <windows.h>
 #include <utility> 
 #include "Product.h" 
@@ -11,55 +11,48 @@
 using namespace std;
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
 
-   
+    cout << "Total products in database: " << Product::getTotalProducts() << endl;
 
-   
-    cout << "Всього товарів у базі: " << Product::getTotalProducts() << endl;
-
-    Product p1(1, "Ноутбук", 25000.0, 5);
+    Product p1(1, "Laptop", 25000.0, 5);
     p1.printInfo();
 
-    cout << "\nЗнайшли ще один ноутбук " << endl;
+    cout << "\nFound another laptop " << endl;
     ++p1;
     cout << p1 << endl;
 
-    cout << "\nФормуємо нову партію з 10 штук :" << endl;
+    cout << "\nForming a new batch of 10 items:" << endl;
     Product p_batch = p1 + 10;
-    cout << "Оригінал залишився без змін: " << p1 << endl;
-    cout << "Нова партія: " << p_batch << endl;
+    cout << "Original remained unchanged: " << p1 << endl;
+    cout << "New batch: " << p_batch << endl;
 
-    cout << "\n=== КОНСТРУКТОРИ КОПІЮВАННЯ ТА ПЕРЕМІЩЕННЯ ===" << endl;
-    Product p2 = p1; 
+    cout << "\n=== COPY AND MOVE CONSTRUCTORS ===" << endl;
+    Product p2 = p1;
     Product p3 = std::move(p2);
 
-    cout << "Всього товарів у базі зараз: " << Product::getTotalProducts() << endl;
+    cout << "Total products in database now: " << Product::getTotalProducts() << endl;
 
-    cout << "\n=== РОБОТА З CONST ОБ'ЄКТОМ ===" << endl;
-    const Product p_const(99, "Архівний товар", 0.0, 0);
-    p_const.printInfo(); 
- 
-    Customer c1(1, "Олександр", "sasha@gmail.com");
-    Customer c2(2, "Марія");
+    cout << "\n=== WORKING WITH CONST OBJECT ===" << endl;
+    const Product p_const(99, "Archived product", 0.0, 0);
+    p_const.printInfo();
 
-    cout << "\n--- дані покупців ---" << endl;
-    
+    Customer c1(1, "Alexander", "sasha@gmail.com");
+    Customer c2(2, "Maria");
+
+    cout << "\n--- customer data ---" << endl;
+
     c1.printInfo();
     c2.printInfo();
 
-    cout << "\n=== ТЕСТУВАННЯ КОМПОЗИЦІЇ ТА НАСЛІДУВАННЯ ===" << endl;
+    cout << "\n=== TESTING COMPOSITION AND INHERITANCE ===" << endl;
 
-   
     Order order1(101, p1, 1500.50);
     order1.printOrder();
     order1.pay();
 
-
-   
     Electronics phone(200, "iPhone 15", 45000.0, 10, 12, "Apple");
-
 
     Order order2(102, phone, 45000.0);
     order2.printOrder();
@@ -69,12 +62,11 @@ int main() {
     Smartphone s1(301, "Galaxy S24", 38000.0, 15, 24, "Samsung", "Android", 6.2);
     s1.printInfo();
 
- 
-    cout << "\n--- Copy конструктор Smartphone ---" << endl;
+    cout << "\n--- Copy constructor Smartphone ---" << endl;
     Smartphone s2 = s1;
     s2.printInfo();
 
-    cout << "\n--- Move конструктор Smartphone ---" << endl;
+    cout << "\n--- Move constructor Smartphone ---" << endl;
     Smartphone s3 = std::move(s2);
     s3.printInfo();
 
@@ -83,21 +75,21 @@ int main() {
     s4 = s1;
     s4.printInfo();
 
-    cout << "\n--- Замовлення смартфону ---" << endl;
+    cout << "\n--- Smartphone order ---" << endl;
     Order order3(103, s1, 38000.0);
     order3.printOrder();
     order3.pay();
 
-    cout << "\n=== ТЕСТУВАННЯ LAPTOP (3-й рівень ієрархії) ===" << endl;
+    cout << "\n=== TESTING LAPTOP (3rd level of hierarchy) ===" << endl;
 
     Laptop l1(401, "MacBook Pro", 95000.0, 3, 12, "Apple", 16, "M3 Pro");
     l1.printInfo();
 
-    cout << "\n--- Copy конструктор Laptop ---" << endl;
+    cout << "\n--- Copy constructor Laptop ---" << endl;
     Laptop l2 = l1;
     l2.printInfo();
 
-    cout << "\n--- Move конструктор Laptop ---" << endl;
+    cout << "\n--- Move constructor Laptop ---" << endl;
     Laptop l3 = std::move(l2);
     l3.printInfo();
 
@@ -106,21 +98,37 @@ int main() {
     l4 = l1;
     l4.printInfo();
 
-    cout << "\n--- Замовлення ноутбука ---" << endl;
+    cout << "\n--- Laptop order ---" << endl;
     Order order4(104, l1, 95000.0);
     order4.printOrder();
     order4.pay();
 
-
-    cout << "\n=== ВВЕДЕННЯ НОВОГО ТОВАРУ ===" << endl;
-    Product p_custom(100, "Пустишка");
-    cout << "-> Будь ласка, введіть дані для нового товару:" << endl;
+    /*cout << "\n=== ENTERING NEW PRODUCT ===" << endl;
+    Product p_custom(100, "Dummy");
+    cout << "-> Please enter data for the new product:" << endl;
     cin >> p_custom;
-    cout << "\nВи успішно додали: " << p_custom << endl;
+    cout << "\nYou have successfully added: " << p_custom << endl;*/
 
+    cout << "\n=== DEMONSTRATION OF POLYMORPHISM ===" << endl;
 
+    Electronics iphone(101, "iPhone", 40000, 5, 12, "Apple");
 
-    cout << "\n=== ЗАВЕРШЕННЯ ПРОГРАМИ ===" << endl;
+    Product* ptr = &iphone;
+
+    cout << ptr->getDescription() << endl;
+
+    ptr->printInfo();
+
+    cout << "\n=== 1) STATIC BINDING ===" << endl;
+
+    Electronics e1(501, "TV", 15000.0, 2, 12, "LG");
+
+    cout << "Call through Electronics object: ";
+    e1.showType();
+
+    Product* basePtr = &e1;
+    cout << "Call through Product*: ";
+    basePtr->showType();
 
     return 0;
 }

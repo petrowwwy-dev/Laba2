@@ -1,17 +1,17 @@
-#include "Electronics.h"
+Ôªø#include "Electronics.h"
 
 using namespace std;
 
 
 Electronics::Electronics(int id, string name, double price, int stock, int warranty, string brand)
     : Product(id, name, price, stock), warrantyMonths(warranty), brand(brand) {
-    cout << "[Electronics] —Ú‚ÓÂÌÓ: " << this->brand << " " << this->name << endl;
+    cout << "[Electronics] –°—Ç–≤–æ—Ä–µ–Ω–æ: " << this->brand << " " << this->name << endl;
 }
 
 Electronics::Electronics(const Electronics& other)
     : Product(other), 
     warrantyMonths(other.warrantyMonths), brand(other.brand) {
-    cout << "[Electronics] Copy ÍÓÌÒÚÛÍÚÓ ‰Îˇ: " << brand << endl;
+    cout << "[Electronics] Copy –∫–æ–Ω—Å—Ç—Ä—É–∫—Ç–æ—Ä –¥–ª—è: " << brand << endl;
 }
 
 
@@ -20,7 +20,7 @@ Electronics::Electronics(Electronics&& other) noexcept
     warrantyMonths(other.warrantyMonths), brand(std::move(other.brand)) {
 
     other.warrantyMonths = 0; 
-    cout << "[Electronics] Move ÍÓÌÒÚÛÍÚÓ ‰Îˇ: " << brand << endl;
+    cout << "[Electronics] Move –∫–æ–Ω—Å—Ç—Ä—É–∫—Ç–æ—Ä –¥–ª—è: " << brand << endl;
 }
 
 
@@ -36,18 +36,26 @@ Electronics& Electronics::operator=(const Electronics& other) {
     this->warrantyMonths = other.warrantyMonths;
     this->brand = other.brand;
 
-    cout << "[Electronics] Operator= (œËÒ‚Ó˛‚‡ÌÌˇ) ‰Îˇ: " << brand << endl;
+    cout << "[Electronics] Operator= (–ü—Ä–∏—Å–≤–æ—é–≤–∞–Ω–Ω—è) –¥–ª—è: " << brand << endl;
     return *this;
 }
 
 
 Electronics::~Electronics() {
-    cout << "[Electronics] ¬Ë‰‡ÎÂÌÓ: " << brand << endl;
+    cout << "[Electronics] –í–∏–¥–∞–ª–µ–Ω–æ: " << brand << endl;
 }
 
 
 void Electronics::printInfo() const {
     
-    cout << "≈ÎÂÍÚÓÌ≥Í‡ [" << brand << "] " << name
-        << " | ÷≥Ì‡: " << price << " „Ì | √‡‡ÌÚ≥ˇ: " << warrantyMonths << " Ï≥Ò." << endl;
+    cout << "–ï–ª–µ–∫—Ç—Ä–æ–Ω—ñ–∫–∞ [" << brand << "] " << name
+        << " | –¶—ñ–Ω–∞: " << price << " –≥—Ä–Ω | –ì–∞—Ä–∞–Ω—Ç—ñ—è: " << warrantyMonths << " –º—ñ—Å." << endl;
+}
+
+void Electronics::showType() const {
+    std::cout << "Electronics::showType -> –¶–µ –∫–ª–∞—Å Electronics" << std::endl;
+}
+
+std::string Electronics::getDescription() const {
+    return "–¶–µ –µ–ª–µ–∫—Ç—Ä–æ–Ω—ñ–∫–∞. –ë—Ä–µ–Ω–¥: " + brand;
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Product.h"
 #include <string>
 #include <iostream>
@@ -29,4 +29,6 @@ public:
 
     
     void printInfo() const;
+    std::string getDescription() const override;
+    void showType() const;
 };

@@ -6,23 +6,23 @@ using namespace std;
 Customer::Customer(int cId, string cName, string cEmail)
     : id(cId), name(cName), email(cEmail) {
 
-    cout << "Ïîêóïöÿ íà ³ì'ÿ " << name << " óñï³øíî ñòâîðåíî!" << endl;
+    cout << "ÐŸÐ¾ÐºÑƒÐ¿Ñ†Ñ Ð½Ð° Ñ–Ð¼'Ñ " << name << " ÑƒÑÐ¿Ñ–ÑˆÐ½Ð¾ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾!" << endl;
 }
 
-Customer::Customer(int cId, string cName) : Customer(cId, cName, "íåìàº") {
-    cout << "Ñïðàöþâàâ äåëåãóþ÷èé êîíñòðóêòîð!" << endl;
+Customer::Customer(int cId, string cName) : Customer(cId, cName, "Ð½ÐµÐ¼Ð°Ñ”") {
+    cout << "Ð¡Ð¿Ñ€Ð°Ñ†ÑŽÐ²Ð°Ð² Ð´ÐµÐ»ÐµÐ³ÑƒÑŽÑ‡Ð¸Ð¹ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€!" << endl;
 }
 
 
 Customer::~Customer() {
-    cout << "Ïîêóïöÿ " << name << " âèäàëåíî." << endl;
+    cout << "ÐŸÐ¾ÐºÑƒÐ¿Ñ†Ñ " << name << " Ð²Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾." << endl;
 }
 
 void Customer::printInfo() {
 
-    cout << "=== ²íôîðìàö³ÿ ïðî ïîêóïöÿ ===" << endl;
+    cout << "=== Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¿Ð¾ÐºÑƒÐ¿Ñ†Ñ ===" << endl;
     cout << "ID: " << id << endl;
-    cout << "²ì'ÿ: " << name << endl;
+    cout << "Ð†Ð¼'Ñ: " << name << endl;
     cout << "Email: " << email << endl;
     cout << "==============================" << endl;
 }

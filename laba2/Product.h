@@ -1,7 +1,8 @@
-#pragma once
+﻿#pragma once
 #include <string>
+#include "IPrintable.h"
 
-class Product {
+class Product : public IPrintable {
 protected:
     int id;
     std::string name;
@@ -28,9 +29,11 @@ public:
 
     virtual  ~Product();
 
-    void printInfo() const;
+    virtual std::string getDescription() const;
+    virtual void printInfo() const override;
+    void showType() const;
     void updateStock(int amount);
-
+  
     static int getTotalProducts();
 
     Product& operator++();

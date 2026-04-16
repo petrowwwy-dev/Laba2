@@ -9,20 +9,20 @@ Smartphone::Smartphone(int id, string name, double price, int stock,
     string os, double screenSize)
     : Electronics(id, name, price, stock, warranty, brand),
     os(os), screenSize(screenSize) {
-    cout << "[Smartphone] Ñòâîðåíî: " << name << " (" << this->os << ", " << this->screenSize << "\")" << endl;
+    cout << "[Smartphone] Ð¡Ñ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾: " << name << " (" << this->os << ", " << this->screenSize << "\")" << endl;
 }
 
 Smartphone::Smartphone(const Smartphone& other)
     : Electronics(other),
     os(other.os), screenSize(other.screenSize) {
-    cout << "[Smartphone] Copy êîíñòðóêòîð äëÿ: " << name << endl;
+    cout << "[Smartphone] Copy ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ: " << name << endl;
 }
 
 Smartphone::Smartphone(Smartphone&& other) noexcept
     : Electronics(std::move(other)),
     os(std::move(other.os)), screenSize(other.screenSize) {
     other.screenSize = 0.0;
-    cout << "[Smartphone] Move êîíñòðóêòîð äëÿ: " << name << endl;
+    cout << "[Smartphone] Move ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ: " << name << endl;
 }
 
 Smartphone& Smartphone::operator=(const Smartphone& other) {
@@ -33,16 +33,16 @@ Smartphone& Smartphone::operator=(const Smartphone& other) {
     this->os = other.os;
     this->screenSize = other.screenSize;
 
-    cout << "[Smartphone] Operator= äëÿ: " << name << endl;
+    cout << "[Smartphone] Operator= Ð´Ð»Ñ: " << name << endl;
     return *this;
 }
 
 Smartphone::~Smartphone() {
-    cout << "[Smartphone] Âèäàëåíî: " << name << endl;
+    cout << "[Smartphone] Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾: " << name << endl;
 }
 
 void Smartphone::printInfo() const {
-    cout << "Ñìàðòôîí | ";
+    cout << "Ð¡Ð¼Ð°Ñ€Ñ‚Ñ„Ð¾Ð½ | ";
     Electronics::printInfo();
-    cout << "  ÎÑ: " << os << " | Åêðàí: " << screenSize << "\"" << endl;
+    cout << "  ÐžÐ¡: " << os << " | Ð•ÐºÑ€Ð°Ð½: " << screenSize << "\"" << endl;
 }

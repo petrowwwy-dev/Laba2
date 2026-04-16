@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Electronics.h" />
+    <ClInclude Include="IPrintable.h" />
     <ClInclude Include="Laptop.h" />
     <ClInclude Include="Smartphone.h" />
     <ClInclude Include="Order.h" />

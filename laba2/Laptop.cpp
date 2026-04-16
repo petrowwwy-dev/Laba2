@@ -9,20 +9,20 @@ Laptop::Laptop(int id, string name, double price, int stock,
     int ramGB, string cpu)
     : Electronics(id, name, price, stock, warranty, brand),
     ramGB(ramGB), cpu(cpu) {
-    cout << "[Laptop] Ñòâîðåíî: " << name << " (RAM: " << this->ramGB << " ÃÁ, CPU: " << this->cpu << ")" << endl;
+    cout << "[Laptop] Ð¡Ñ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾: " << name << " (RAM: " << this->ramGB << " Ð“Ð‘, CPU: " << this->cpu << ")" << endl;
 }
 
 Laptop::Laptop(const Laptop& other)
     : Electronics(other),
     ramGB(other.ramGB), cpu(other.cpu) {
-    cout << "[Laptop] Copy êîíñòðóêòîð äëÿ: " << name << endl;
+    cout << "[Laptop] Copy ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ: " << name << endl;
 }
 
 Laptop::Laptop(Laptop&& other) noexcept
     : Electronics(std::move(other)),
     ramGB(other.ramGB), cpu(std::move(other.cpu)) {
     other.ramGB = 0;
-    cout << "[Laptop] Move êîíñòðóêòîð äëÿ: " << name << endl;
+    cout << "[Laptop] Move ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ: " << name << endl;
 }
 
 Laptop& Laptop::operator=(const Laptop& other) {
@@ -33,16 +33,16 @@ Laptop& Laptop::operator=(const Laptop& other) {
     this->ramGB = other.ramGB;
     this->cpu = other.cpu;
 
-    cout << "[Laptop] Operator= äëÿ: " << name << endl;
+    cout << "[Laptop] Operator= Ð´Ð»Ñ: " << name << endl;
     return *this;
 }
 
 Laptop::~Laptop() {
-    cout << "[Laptop] Âèäàëåíî: " << name << endl;
+    cout << "[Laptop] Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾: " << name << endl;
 }
 
 void Laptop::printInfo() const {
-    cout << "Íîóòáóê | ";
+    cout << "ÐÐ¾ÑƒÑ‚Ð±ÑƒÐº | ";
     Electronics::printInfo();
-    cout << "  RAM: " << ramGB << " ÃÁ | CPU: " << cpu << endl;
+    cout << "  RAM: " << ramGB << " Ð“Ð‘ | CPU: " << cpu << endl;
 }
