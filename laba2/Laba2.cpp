@@ -16,7 +16,7 @@ int main() {
 
     cout << "Total products in database: " << Product::getTotalProducts() << endl;
 
-    Product p1(1, "Laptop", 25000.0, 5);
+    Electronics p1(1, "Laptop", 25000.0, 5);
     p1.printInfo();
 
     cout << "\nFound another laptop " << endl;
@@ -24,19 +24,19 @@ int main() {
     cout << p1 << endl;
 
     cout << "\nForming a new batch of 10 items:" << endl;
-    Product p_batch = p1 + 10;
+    Electronics p_batch = p1 + 10;
     cout << "Original remained unchanged: " << p1 << endl;
     cout << "New batch: " << p_batch << endl;
 
     cout << "\n=== COPY AND MOVE CONSTRUCTORS ===" << endl;
-    Product p2 = p1;
-    Product p3 = std::move(p2);
+    Electronics p2 = p1;
+    Electronics p3 = std::move(p2);
 
     cout << "Total products in database now: " << Product::getTotalProducts() << endl;
 
-    cout << "\n=== WORKING WITH CONST OBJECT ===" << endl;
+   /* cout << "\n=== WORKING WITH CONST OBJECT ===" << endl;
     const Product p_const(99, "Archived product", 0.0, 0);
-    p_const.printInfo();
+    p_const.printInfo();*/
 
     Customer c1(1, "Alexander", "sasha@gmail.com");
     Customer c2(2, "Maria");
@@ -119,6 +119,12 @@ int main() {
 
     ptr->printInfo();
 
+    Laptop l(802, "ThinkPad X1", 55000.0, 5, 24, "Lenovo", 32, "Intel i7");
+
+    Product& ref2 = l;
+    ref2.printInfo();     
+
+
     cout << "\n=== 1) STATIC BINDING ===" << endl;
 
     Electronics e1(501, "TV", 15000.0, 2, 12, "LG");
@@ -130,5 +136,20 @@ int main() {
     cout << "Call through Product*: ";
     basePtr->showType();
 
+    cout << "\n=== PURE VIRTUAL FUNCTION DEMO ===" << endl;
+
+    // Product p(1, "Base", 1000.0, 1); // НЕ МОЖНА: Product абстрактний клас
+
+    Product* d1 = new Electronics(901, "TV", 15000.0, 2, 12, "LG");
+    Product* d2 = new Smartphone(902, "Galaxy S24", 38000.0, 10, 24, "Samsung", "Android", 6.2);
+    Product* d3 = new Laptop(903, "ThinkPad X1", 55000.0, 5, 24, "Lenovo", 32, "Intel i7");
+
+    cout << "Electronics discount: " << d1->calculateDiscount() << " грн" << endl;
+    cout << "Smartphone discount:  " << d2->calculateDiscount() << " грн" << endl;
+    cout << "Laptop discount:      " << d3->calculateDiscount() << " грн" << endl;
+
+    delete d1;
+    delete d2;
+    delete d3;
     return 0;
 }

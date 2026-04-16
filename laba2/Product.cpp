@@ -1,4 +1,4 @@
-#include "Product.h" 
+﻿#include "Product.h" 
 #include <iostream>
 #include <utility>
 
@@ -84,16 +84,16 @@ int Product::getTotalProducts() {
     return totalProducts;
 }
 
-Product& Product::operator++() {
-    this->stock++;
-    return *this;
-}
-
-    Product Product::operator+(int extraStock) const {
-    Product temp = *this; 
-    temp.stock += extraStock; 
-    return temp; 
-}
+//Product& Product::operator++() {
+//    this->stock++;
+//    return *this;
+//}
+//
+//    Product Product::operator+(int extraStock) const {
+//    Product temp = *this; 
+//    temp.stock += extraStock; 
+//    return temp; 
+//}
 
 
 ostream& operator<<(ostream& os, const Product& p) {

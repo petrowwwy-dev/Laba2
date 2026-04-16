@@ -19,7 +19,7 @@ public:
     Smartphone& operator=(const Smartphone& other);
 
     ~Smartphone() override;
-
-    void printInfo() const;
+    double calculateDiscount() const override;
+    void printInfo() const override final;
 };
 

@@ -1,11 +1,11 @@
-#include "Order.h"
+﻿#include "Order.h"
 #include <iostream>
 
 using namespace std;
 
 // Оновлений конструктор: тепер він копіює переданий product у внутрішню змінну orderedProduct
 Order::Order(int oId, const Product& product, double oAmount, string oStatus)
-    : orderId(oId), orderedProduct(product), totalAmount(oAmount), status(oStatus) {
+    : orderId(oId), orderedProduct(const_cast<Product*>(&product)), totalAmount(oAmount), status(oStatus) {
     cout << " Створено замовлення №" << orderId << endl;
 }
 
@@ -33,7 +33,7 @@ void Order::printOrder() {
 
     // Викликаємо метод вкладеного об'єкта товару (Композиція в дії!)
     cout << "--- Деталі товару ---" << endl;
-    orderedProduct.printInfo();
+    orderedProduct->printInfo();
 
     cout << "=========================\n" << endl;
 }

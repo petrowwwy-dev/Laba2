@@ -1,4 +1,4 @@
-#include "Laptop.h"
+﻿#include "Laptop.h"
 #include <iostream>
 #include <utility>
 
@@ -46,3 +46,4 @@ void Laptop::printInfo() const {
     Electronics::printInfo();
     cout << "  RAM: " << ramGB << " ГБ | CPU: " << cpu << endl;
 }
+double Laptop::calculateDiscount() const { return price * 0.10; }

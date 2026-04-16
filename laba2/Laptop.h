@@ -22,6 +22,6 @@ public:
     Laptop& operator=(const Laptop& other);
 
     ~Laptop() override;
-
+    double calculateDiscount() const override;
     void printInfo() const;
 };

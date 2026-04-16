@@ -28,7 +28,7 @@ public:
 
 
     virtual  ~Product();
-
+    virtual double calculateDiscount() const = 0;
     virtual std::string getDescription() const;
     virtual void printInfo() const override;
     void showType() const;
@@ -36,8 +36,8 @@ public:
   
     static int getTotalProducts();
 
-    Product& operator++();
-    Product operator+(int extraStock) const;
+    /*Product& operator++();
+    Product operator+(int extraStock) const;*/
     friend std::ostream& operator<<(std::ostream& os, const Product& p);
     friend std::istream& operator>>(std::istream& is, Product& p);
 

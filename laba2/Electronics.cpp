@@ -23,6 +23,16 @@ Electronics::Electronics(Electronics&& other) noexcept
     cout << "[Electronics] Move конструктор для: " << brand << endl;
 }
 
+Electronics& Electronics::operator++() {
+    this->stock++;
+    return *this;
+}
+
+Electronics Electronics::operator+(int extraStock) const {
+    Electronics temp = *this; 
+    temp.stock += extraStock; 
+    return temp;              
+}
 
 Electronics& Electronics::operator=(const Electronics& other) {
     if (this == &other) {
@@ -45,6 +55,13 @@ Electronics::~Electronics() {
     cout << "[Electronics] Видалено: " << brand << endl;
 }
 
+Electronics::Electronics(int id, string name, double price, int stock)
+    : Product(id, name, price, stock),
+    warrantyMonths(0),
+    brand("Невідомо") {
+    cout << "[Electronics] Створено (4 аргументи): " << this->brand << " " << this->name << endl;
+}
+
 
 void Electronics::printInfo() const {
     
@@ -59,3 +76,5 @@ void Electronics::showType() const {
 std::string Electronics::getDescription() const {
     return "Це електроніка. Бренд: " + brand;
 }
+double Electronics::calculateDiscount() const {
+    return price * 0.05; }

@@ -1,4 +1,4 @@
-#include "Smartphone.h"
+﻿#include "Smartphone.h"
 #include <iostream>
 #include <utility>
 
@@ -46,3 +46,4 @@ void Smartphone::printInfo() const {
     Electronics::printInfo();
     cout << "  ОС: " << os << " | Екран: " << screenSize << "\"" << endl;
 }
+double Smartphone::calculateDiscount() const { return price * 0.07; }

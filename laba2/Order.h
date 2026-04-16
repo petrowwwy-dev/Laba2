@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include "Product.h"
 
 class Order {
 private:
     int orderId;
-    Product orderedProduct;
+    Product* orderedProduct;
     double totalAmount;
     std::string status;
 
