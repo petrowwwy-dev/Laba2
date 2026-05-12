@@ -7,12 +7,113 @@
 #include "Electronics.h"
 #include "Smartphone.h"
 #include "Laptop.h"
+#include "StoreManager.h"
+
 
 using namespace std;
+
+void adminMenu(StoreManager& store) {
+    string password;
+    cout << "\n>>> Enter Admin Password: ";
+    cin >> password;
+
+    if (password != "admin123") {
+        cout << " [!] Access Denied. Incorrect password.\n";
+        return;
+    }
+
+    int choice = -1;
+    while (choice != 0) {
+        cout << "\n===== ADMIN PANEL =====" << endl;
+        cout << "1. Add Laptop" << endl;
+        cout << "2. Add Smartphone" << endl;
+        cout << "3. View All Products" << endl;
+        cout << "0. Back to Main Menu" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            int id; string name; double price;
+            cout << "ID: "; cin >> id;
+            cout << "Name: "; cin.ignore(); getline(cin, name);
+            cout << "Price: "; cin >> price;
+
+            // Simplified call - using default values for brand/ram/cpu for now
+            store.addLaptop(id, name, price, 10, 12, "Generic", 16, "i5");
+            cout << " [+] Laptop added successfully!" << endl;
+        }
+        else if (choice == 2) {
+            // Similarly for smartphone
+            cout << " (Logic for smartphone addition here)" << endl;
+        }
+        else if (choice == 3) {
+            store.showAllProducts();
+        }
+    }
+}
+
+void userMenu(StoreManager& store) {
+    int choice = -1;
+    while (choice != 0) {
+        cout << "\n===== CUSTOMER STORE =====" << endl;
+        cout << "1. Browse Catalog" << endl;
+        cout << "2. Buy Product (by index)" << endl;
+        cout << "0. Exit Store" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            store.showAllProducts();
+        }
+        else if (choice == 2) {
+            int index;
+            cout << "Enter product number to buy: ";
+            cin >> index;
+            try {
+                auto item = store.getProduct(index - 1);
+                item->updateStock(-1); // Reduces stock by 1
+                cout << " [V] Purchase successful! Thank you." << endl;
+            }
+            catch (...) {
+                cout << " [X] Error: Product not found." << endl;
+            }
+        }
+    }
+}
+
+
 
 int main() {
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
+
+    StoreManager store; // Database is loaded automatically here
+    int role = -1;
+
+    while (role != 0) {
+        cout << "\n===============================" << endl;
+        cout << "   ELECTRONICS STORE SYSTEM" << endl;
+        cout << "===============================" << endl;
+        cout << "1. Enter as Customer" << endl;
+        cout << "2. Enter as Administrator" << endl;
+        cout << "0. Shut Down" << endl;
+        cout << "Selection: ";
+        cin >> role;
+
+        if (role == 1) {
+            userMenu(store);
+        }
+        else if (role == 2) {
+            adminMenu(store);
+        }
+        else if (role == 0) {
+            cout << "Saving data and exiting... Goodbye!" << endl;
+        }
+        else {
+            cout << "Invalid input. Please try again." << endl;
+        }
+    }
+
 
     cout << "Total products in database: " << Product::getTotalProducts() << endl;
 
