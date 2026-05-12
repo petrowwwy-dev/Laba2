@@ -20,6 +20,7 @@ public:
 
     ~Smartphone() override;
     double calculateDiscount() const override;
+    std::string toFileString() const override;
     void printInfo() const override final;
 };
 

@@ -5,9 +5,9 @@
 
 
 class Electronics : public Product {
-private:
-    int warrantyMonths; 
-    std::string brand;  
+protected:
+    int warrantyMonths;
+    std::string brand;
 
 public:
     
@@ -33,4 +33,5 @@ public:
     void printInfo() const;
     std::string getDescription() const override;
     void showType() const;
+    std::string toFileString() const override;
 };

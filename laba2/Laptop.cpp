@@ -47,3 +47,10 @@ void Laptop::printInfo() const {
     cout << "  RAM: " << ramGB << " ГБ | CPU: " << cpu << endl;
 }
 double Laptop::calculateDiscount() const { return price * 0.10; }
+
+string Laptop::toFileString() const {
+    return "L;" + to_string(id) + ";" + name + ";" +
+        to_string(price) + ";" + to_string(stock) + ";" +
+        to_string(warrantyMonths) + ";" + brand + ";" +
+        to_string(ramGB) + ";" + cpu;
+}

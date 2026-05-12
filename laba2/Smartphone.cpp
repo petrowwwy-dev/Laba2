@@ -47,3 +47,9 @@ void Smartphone::printInfo() const {
     cout << "  ОС: " << os << " | Екран: " << screenSize << "\"" << endl;
 }
 double Smartphone::calculateDiscount() const { return price * 0.07; }
+string Smartphone::toFileString() const {
+    return "S;" + to_string(id) + ";" + name + ";" +
+        to_string(price) + ";" + to_string(stock) + ";" +
+        to_string(warrantyMonths) + ";" + brand + ";" +
+        os + ";" + to_string(screenSize);
+}

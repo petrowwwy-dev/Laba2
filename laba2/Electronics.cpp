@@ -78,3 +78,9 @@ std::string Electronics::getDescription() const {
 }
 double Electronics::calculateDiscount() const {
     return price * 0.05; }
+
+string Electronics::toFileString() const {
+    return "E;" + to_string(id) + ";" + name + ";" +
+        to_string(price) + ";" + to_string(stock) + ";" +
+        to_string(warrantyMonths) + ";" + brand;
+}

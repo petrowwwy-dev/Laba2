@@ -28,6 +28,8 @@ public:
 
 
     virtual  ~Product();
+  
+    virtual std::string toFileString() const = 0;
     virtual double calculateDiscount() const = 0;
     virtual std::string getDescription() const;
     virtual void printInfo() const override;
