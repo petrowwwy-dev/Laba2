@@ -23,6 +23,7 @@
     <ClInclude Include="Electronics.h" />
     <ClInclude Include="IPrintable.h" />
     <ClInclude Include="Laptop.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Smartphone.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
